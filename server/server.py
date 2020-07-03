@@ -35,6 +35,7 @@ def hello_world():
     #  DEBUG('Get root', {
     #      'version': config['version'],
     #  })
+    rootPath = config['rootPath']
     return '(' + rootPath + ') Index page <a href="' + url_for('hello', name='Some Name') + '">hello</a>'
 
 
