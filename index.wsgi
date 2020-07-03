@@ -9,4 +9,4 @@ with open(activate_this) as f:
 
 sys.path.insert(1,'/home/g/goldenjeru/lilliputten.ru/cam/')
 
-from server.server import app as application
+from server.app import app as application
