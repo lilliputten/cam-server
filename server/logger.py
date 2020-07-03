@@ -4,13 +4,14 @@
 # @changed 2020.04.23, 03:48
 
 
-import os
+#  import os
 from os import path
-from config import config
 import datetime
 import yaml
 from termcolor import colored
+
 import utils  # noqa
+from .config import config
 
 
 def createHeader():

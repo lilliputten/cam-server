@@ -13,28 +13,18 @@ from .config import config
 from .logger import DEBUG
 
 #  import os
-
 #  import yaml
 
 UPLOAD_FOLDER = '/path/to/the/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
-#  app = Flask(__name__)
-
-
-#  rootPath = os.getcwd()
-#  rootPath = app.root_path
-DEBUG('Started', {
-    #  'rootPath': rootPath,
-    'config.rootPath': config['rootPath'],
-})
-
 
 @app.route('/')
 def hello_world():
-    #  DEBUG('Get root', {
-    #      'version': config['version'],
-    #  })
+    DEBUG('Get root', {
+        'version': config['version'],
+        'rootPath': config['rootPath'],
+    })
     rootPath = config['rootPath']
     return '(' + rootPath + ') Index page <a href="' + url_for('hello', name='Some Name') + '">hello</a>'
 
