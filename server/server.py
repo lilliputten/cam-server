@@ -6,7 +6,7 @@
 #  from config import config
 #  from logger import DEBUG
 
-import os
+#  import os
 
 from flask import Flask, url_for, render_template
 from flask import request, jsonify
@@ -18,8 +18,8 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 
 
-rootPath = os.getcwd()
-
+#  rootPath = os.getcwd()
+rootPath = app.root_path
 #  DEBUG('Started')
 
 
