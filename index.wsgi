@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @module index.wsgi
 # @since 2019.03.28, 21:32
-# @changed 2019.03.28, 23:07
+# @changed 2020.07.04, 01:47
 
 import sys
 
@@ -12,4 +12,4 @@ with open(activate_this) as f:
 
 sys.path.insert(1,'/home/g/goldenjeru/lilliputten.ru/cam/')
 
-from server.app import app as application
+from server.server import app as application
