@@ -43,6 +43,7 @@ config = {  # Default config
     'buildTag': buildTag,
     'libPath': libPath,
     'rootPath': rootPath,
+    'uploadPath': path.join(rootPath, 'uploads'),
     'channelsDir': 'channels',
     'outputLog': True,
     'outputColoredLog': True,

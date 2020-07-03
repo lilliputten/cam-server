@@ -9,14 +9,12 @@ from .app import app
 from flask import url_for, render_template
 from flask import request, jsonify
 
+#  from os import path
+
 from .config import config
 from .logger import DEBUG
 
-#  import os
-#  import yaml
-
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+from .upload import uploadImage
 
 
 @app.route('/')
@@ -42,13 +40,19 @@ def profile(username):
 
 @app.route('/upload/<datetag>', methods=['POST'])
 def upload(datetag=''):
-    app.logger.debug('is_json: ' + str(request.is_json))
-    data = request.get_json()
-    app.logger.debug('data: ' + str(data))
-    image = data['image']
-    datetag = data['datetag'] if 'datetag' in data else ''  # None
-    app.logger.debug('image: ' + image)
-    app.logger.debug('datetag: ' + datetag)
+    file = request.files['file']
+    DEBUG('upload', {
+        'datetag': datetag,
+        'file': file.filename,
+    })
+    uploadImage(file=file, datetag=datetag)
+    #  app.logger.debug('is_json: ' + str(request.is_json))
+    #  data = request.get_json()
+    #  app.logger.debug('data: ' + str(data))
+    #  image = data['image']
+    #  datetag = data['datetag'] if 'datetag' in data else ''  # None
+    #  app.logger.debug('image: ' + image)
+    #  app.logger.debug('datetag: ' + datetag)
     return jsonify(status='Upload comes here')
 
 
