@@ -3,8 +3,10 @@
 # @since 2019.03.28, 21:32
 # @version 2019.03.28, 23:07
 
-from config import config
-from logger import DEBUG
+#  from config import config
+#  from logger import DEBUG
+
+import os
 
 from flask import Flask, url_for, render_template
 from flask import request, jsonify
@@ -16,15 +18,17 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 
 
-DEBUG('Started')
+rootPath = os.getcwd()
+
+#  DEBUG('Started')
 
 
 @app.route('/')
 def hello_world():
-    DEBUG('Get root', {
-        'version': config['version'],
-    })
-    return 'Index page <a href="' + url_for('hello', name='Some Name') + '">hello</a>'
+    #  DEBUG('Get root', {
+    #      'version': config['version'],
+    #  })
+    return '(' + rootPath + ') Index page <a href="' + url_for('hello', name='Some Name') + '">hello</a>'
 
 
 @app.route('/hello/')
