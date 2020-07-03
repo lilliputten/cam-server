@@ -1,0 +1,59 @@
+# Unused & temp files
+\!UNUSED
+~*
+*_
+zia*
+*.log
+log.txt
+*.sw?
+*~
+\!ARC*
+
+# Include special jest files/folders
+!__mocks__
+!__snapshots__
+!__tests__
+
+# dependencies
+/node_modules
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
