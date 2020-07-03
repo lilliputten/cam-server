@@ -3,25 +3,29 @@
 # @since 2019.03.28, 21:32
 # @changed 2019.03.28, 23:07
 
-from config import config
-from logger import DEBUG
+#  from flask import current_app as app
+from .app import app
+
+from flask import url_for, render_template
+from flask import request, jsonify
+
+from .config import config
+from .logger import DEBUG
 
 #  import os
 
-from flask import Flask, url_for, render_template
-from flask import request, jsonify
 #  import yaml
 
 UPLOAD_FOLDER = '/path/to/the/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
-app = Flask(__name__)
+#  app = Flask(__name__)
 
 
 #  rootPath = os.getcwd()
-rootPath = app.root_path
+#  rootPath = app.root_path
 DEBUG('Started', {
-    'rootPath': rootPath,
+    #  'rootPath': rootPath,
     'config.rootPath': config['rootPath'],
 })
 

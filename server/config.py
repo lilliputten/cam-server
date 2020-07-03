@@ -6,7 +6,8 @@
 #  - https://docs.python.org/3/library/configparser.html -- ???
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
 
-from flask import current_app as app
+#  from flask import current_app as app
+from .app import app
 
 from os import path
 import json
