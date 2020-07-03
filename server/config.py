@@ -6,11 +6,16 @@
 #  - https://docs.python.org/3/library/configparser.html -- ???
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
 
-from os import path, getcwd
+from flask import current_app as app
+
+from os import path
 import json
 import yaml
 
-rootPath = getcwd()
+#  rootPath = getcwd()
+libPath = app.root_path
+rootPath = path.dirname(libPath)
+
 yamlConfigFilename = path.join(rootPath, 'config.yml')
 yamlLocalConfigFilename = path.join(rootPath, 'config.local.yml')
 
@@ -35,6 +40,7 @@ if path.isfile(buildTagFilename):
 config = {  # Default config
     'version': version,
     'buildTag': buildTag,
+    'libPath': libPath,
     'rootPath': rootPath,
     'channelsDir': 'channels',
     'outputLog': True,

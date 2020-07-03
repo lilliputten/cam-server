@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 # @module main
 # @since 2019.03.28, 21:32
-# @version 2019.03.28, 23:07
+# @changed 2019.03.28, 23:07
 
-#  from config import config
-#  from logger import DEBUG
+from config import config
+from logger import DEBUG
 
 #  import os
 
@@ -20,7 +20,10 @@ app = Flask(__name__)
 
 #  rootPath = os.getcwd()
 rootPath = app.root_path
-#  DEBUG('Started')
+DEBUG('Started', {
+    'rootPath': rootPath,
+    'config.rootPath': config['rootPath'],
+})
 
 
 @app.route('/')

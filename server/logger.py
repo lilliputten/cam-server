@@ -49,7 +49,7 @@ def DEBUG(title, data=None):
         if config['clearLogFile']:
             fileMode = 'w'  # Clear file on first entry
     if config['writeLog']:
-        rootPath = os.getcwd()
+        rootPath = config['rootPath']  # os.getcwd()
         logFile = path.join(rootPath, 'log.txt')
         with open(logFile, fileMode) as file:
             file.write(header + '\n')
