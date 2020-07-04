@@ -30,9 +30,6 @@ def uploadImage(file):
     now = datetime.datetime.now()
     timestamp = now.strftime(config['shortDateFormat'])
 
-    if ext not in ALLOWED_EXTENSIONS:
-        return {'error': 'Unexpected extension'}
-
     data = {
         'filename': filename,
         'name': name,
@@ -41,6 +38,12 @@ def uploadImage(file):
     }
 
     DEBUG('uploadImage', data)
+
+    if ext not in ALLOWED_EXTENSIONS:
+        error = 'Unexpected extension: ' + ext
+        DEBUG('uploadImage: error: ' + error, data)
+        return {'error': error}
+
     uploadPath = config['uploadPath']
     try:
         if not os.path.exists(uploadPath):
