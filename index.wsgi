@@ -12,10 +12,9 @@ with open(activate_this) as f:
     code = compile(f.read(), activate_this, 'exec')
     exec(code, dict(__file__=activate_this))
 
-global ROOT_PATH
-ROOT_PATH = os.getcwd()
+rootPath = os.path.dirname(os.path.abspath(__file__))  # From index.wsgi
 
-sys.path.insert(1, ROOT_PATH)
+sys.path.insert(1, rootPath)
 # sys.path.insert(1,'/home/g/goldenjeru/lilliputten.ru/cam/')
 
 from server.server import app as application  # noqa
