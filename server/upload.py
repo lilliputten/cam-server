@@ -42,12 +42,14 @@ def uploadImage(file):
         'timestamp': timestamp,
     }
 
-    DEBUG('uploadImage: start', data)
-
     if ext not in mimeExtensions:
         error = 'Unexpected extension (' + ext + ')'
         DEBUG('uploadImage: error: ' + error, data)
         return {'error': error}
+
+    data['mimeType'] = mimeTypes[ext]
+
+    DEBUG('uploadImage: data', data)
 
     uploadPath = config['uploadPath']
 
