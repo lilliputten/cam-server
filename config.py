@@ -7,15 +7,18 @@
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
 
 #  from flask import current_app as app
-from .app import app
+#  from flaskapp import app
 
 from os import path
 import json
 import yaml
 
 #  rootPath = getcwd()
-libPath = app.root_path
-rootPath = path.dirname(libPath)
+#  libPath = app.root_path
+#  rootPath = path.dirname(libPath)
+#  rootPath = ROOT_PATH  # From index.wsgi
+rootPath = path.dirname(path.abspath(__file__))  # From index.wsgi
+print 'rootPath: ' + rootPath
 
 yamlConfigFilename = path.join(rootPath, 'config.yml')
 yamlLocalConfigFilename = path.join(rootPath, 'config.local.yml')
@@ -41,7 +44,7 @@ if path.isfile(buildTagFilename):
 config = {  # Default config
     'version': version,
     'buildTag': buildTag,
-    'libPath': libPath,
+    #  'libPath': libPath,
     'rootPath': rootPath,
     'uploadPath': path.join(rootPath, 'uploads'),
     'channelsDir': 'channels',

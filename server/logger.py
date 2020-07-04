@@ -11,13 +11,12 @@ import yaml
 from termcolor import colored
 
 import utils  # noqa
-from .config import config
+from config import config
 
 
 def createHeader():
-    logDateFormat = config['logDateFormat']
     now = datetime.datetime.now()
-    dateTag = now.strftime(logDateFormat)
+    dateTag = now.strftime(config['logDateFormat'])
     #  if dateTag.endswith('000'):  # Remove extra finsishing '000'
     dateTag = dateTag[:-3]  # Convert microseconds (.NNNNNN) to milliseconds (.NNN)
     header = '[' + dateTag + ']'

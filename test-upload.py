@@ -3,8 +3,8 @@ import sys
 
 # http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file
 
-localUrl = 'http://localhost:5000/upload/tag'
-remoteUrl = 'https://cam.lilliputten.ru/upload/tag'
+localUrl = 'http://localhost:5000/upload'
+remoteUrl = 'https://cam.lilliputten.ru/upload'
 
 url = remoteUrl if '--remote' in sys.argv else localUrl
 

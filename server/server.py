@@ -11,7 +11,8 @@ from flask import request, jsonify
 
 #  from os import path
 
-from .config import config
+from config import config
+
 from .logger import DEBUG
 
 from .upload import uploadImage
@@ -38,34 +39,10 @@ def profile(username):
     return 'User: %s' % username
 
 
-@app.route('/upload/<datetag>', methods=['POST'])
-def upload(datetag=''):
-    file = request.files['file']
-    DEBUG('upload', {
-        'datetag': datetag,
-        'file': file.filename,
-    })
-    uploadImage(file=file, datetag=datetag)
-    #  app.logger.debug('is_json: ' + str(request.is_json))
-    #  data = request.get_json()
-    #  app.logger.debug('data: ' + str(data))
-    #  image = data['image']
-    #  datetag = data['datetag'] if 'datetag' in data else ''  # None
-    #  app.logger.debug('image: ' + image)
-    #  app.logger.debug('datetag: ' + datetag)
-    return jsonify(status='Upload comes here')
-
-
-@app.route('/uploadJson/', methods=['POST'])
-def uploadJson(datetag=''):
-    app.logger.debug('is_json: ' + str(request.is_json))
-    data = request.get_json()
-    app.logger.debug('uploadJson data: ' + str(data))
-    image = data['image']
-    datetag = data['datetag'] if 'datetag' in data else ''  # None
-    app.logger.debug('uploadJson image: ' + image)
-    app.logger.debug('uploadJson datetag: ' + datetag)
-    return jsonify(status='Upload comes here')
+@app.route('/upload', methods=['POST'])
+def upload():
+    result = uploadImage(request.files['file'])
+    return jsonify(result)
 
 
 if __name__ == '__main__':
