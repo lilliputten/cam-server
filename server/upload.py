@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.07.04, 01:47
+# @changed 2020.07.04, 03:45
 
 import os
 from os import path
 import datetime
+import yaml
 
 from config import config
 
@@ -14,19 +15,23 @@ from logger import DEBUG
 import errors
 
 UPLOAD_FOLDER = path.join(config['uploadPath'])
-ALLOWED_EXTENSIONS = {'aaa'}  # 'png', 'jpg', 'jpeg', 'gif'}
-
+mimeTypes = {
+    'jpg': 'image/jpeg',
+    'jpeg': 'image/jpeg',
+    'png': 'image/png',
+    'gif': 'image/gif',
+    #  'test': 'image/test',
+}
+mimeExtensions = mimeTypes.keys()  # {'aaa'}  # 'png', 'jpg', 'jpeg', 'gif'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-def allowed_file(filename):
-    return filename[-3:].lower() in ALLOWED_EXTENSIONS
-
-
 def uploadImage(file):
     filename = file.filename
-    name, ext = path.splitext(filename)
+    name, extension = path.splitext(filename)
+    ext = extension[1:].lower()
+
     now = datetime.datetime.now()
     timestamp = now.strftime(config['shortDateFormat'])
 
@@ -37,14 +42,15 @@ def uploadImage(file):
         'timestamp': timestamp,
     }
 
-    DEBUG('uploadImage', data)
+    DEBUG('uploadImage: start', data)
 
-    if ext not in ALLOWED_EXTENSIONS:
-        error = 'Unexpected extension: ' + ext
+    if ext not in mimeExtensions:
+        error = 'Unexpected extension (' + ext + ')'
         DEBUG('uploadImage: error: ' + error, data)
         return {'error': error}
 
     uploadPath = config['uploadPath']
+
     try:
         if not os.path.exists(uploadPath):
             os.makedirs(uploadPath)
@@ -54,7 +60,11 @@ def uploadImage(file):
         })
         return {'error': 'Upload file creation error (see server log)'}
     finally:
-        file.save(os.path.join(uploadPath, 'image'))
+        imageFilePath = os.path.join(uploadPath, config['imageFile'])
+        file.save(imageFilePath)
+        yamlFilePath = os.path.join(uploadPath, config['imageYamlFile'])
+        yaml.safe_dump(data, open(yamlFilePath, 'w'), encoding='utf-8', allow_unicode=True)
+        return {'status': 'success', 'timestamp': timestamp}
 
 
 __all__ = [  # Exporting objects...

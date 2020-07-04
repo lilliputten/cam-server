@@ -27,6 +27,7 @@ def createLogData(title, data=None):
     logData = ''
     if data is not None:
         logData = yaml.dump(data, Dumper=utils.CustomYamlDumper, default_flow_style=False, indent=2)
+        logData = logData.replace('!!python/unicode ', '')
         logData = '  ' + logData.replace('\n', '\n  ').rstrip()  # Indent data
         if not logData.endswith('\n'):
             logData += '\n'

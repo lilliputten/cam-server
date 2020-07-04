@@ -1,24 +1,17 @@
 # -*- coding:utf-8 -*-
 # @module config
+# @desc Universal server & client config
 # @since 2020.02.23, 02:18
-# @changed 2020.04.23, 03:48
+# @changed 2020.07.04, 03:45
 # See:
 #  - https://docs.python.org/3/library/configparser.html -- ???
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
-
-#  from flask import current_app as app
-#  from flaskapp import app
 
 from os import path
 import json
 import yaml
 
-#  rootPath = getcwd()
-#  libPath = app.root_path
-#  rootPath = path.dirname(libPath)
-#  rootPath = ROOT_PATH  # From index.wsgi
-rootPath = path.dirname(path.abspath(__file__))  # From index.wsgi
-print 'rootPath: ' + rootPath
+rootPath = path.dirname(path.abspath(__file__))  # Project root path
 
 yamlConfigFilename = path.join(rootPath, 'config.yml')
 yamlLocalConfigFilename = path.join(rootPath, 'config.local.yml')
@@ -44,9 +37,10 @@ if path.isfile(buildTagFilename):
 config = {  # Default config
     'version': version,
     'buildTag': buildTag,
-    #  'libPath': libPath,
     'rootPath': rootPath,
     'uploadPath': path.join(rootPath, 'uploads'),
+    'imageFile': 'image',
+    'imageYamlFile': 'image.yaml',
     'channelsDir': 'channels',
     'outputLog': True,
     'outputColoredLog': True,
@@ -56,15 +50,6 @@ config = {  # Default config
     'shortDateFormat': '%Y.%m.%d-%H:%M',
     'logDateFormat': '%y%m%d-%H%M%S-%f',
     'detailedDateFormat': '%Y.%m.%d-%H:%M:%S.%f',
-    'testList': [
-        1,
-        2,
-        [
-            3,
-            4,
-        ],
-    ],
-    #  'collectorFileName': 'collector.txt',  # Add to gitignore
 }
 
 
