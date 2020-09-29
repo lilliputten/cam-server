@@ -29,8 +29,9 @@ def listImages():
     DEBUG('listImages called', {
         'list': list,
     })
+    if not list or not len(list):
+        return render_template('noImages.html')
     return render_template('listImages.html', list=list)
-    #  return 'listImages'
 
 
 def viewImage(id):

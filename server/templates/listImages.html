@@ -5,7 +5,7 @@
 {% block content %}
   <ul class="images">
     {% for id in list %}
-      <li><a href="{{ url_for('viewImage', id=id) }}">{{ id }}</li>
+      <li><a href="{{ url_for('viewImageRoute', id=id) }}">{{ id }}</li>
     {% endfor %}
   </ul>
 {% endblock %}
