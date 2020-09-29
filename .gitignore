@@ -9,6 +9,7 @@ log*.txt
 \!ARC*
 uploads
 __pycache__
+*.session
 
 # Include special jest files/folders
 !__mocks__
