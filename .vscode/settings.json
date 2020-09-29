@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/*.tmp": true,
+        "**/.*.sw?": true,
+        "**/*.pyc": true
+    },
+    "python.venvFolders": [
+        ".venv"
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "d:\\Work\\My\\cam\\server\\.venv\\Scripts\\python.exe",
+    "terminal.integrated.shellArgs.windows": ["-ExecutionPolicy", "Bypass"]
+}
