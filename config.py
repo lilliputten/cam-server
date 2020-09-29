@@ -30,30 +30,54 @@ if path.isfile(packageFilename):
     pkgConfigFile.close()
 
 if path.isfile(buildTagFilename):
-    buildTagFile = open(buildTagFilename, 'r')
+    buildTagFile = open(buildTagFilename, 'rb')
     buildTag = buildTagFile.read()
     buildTagFile.close()
 
 config = {  # Default config
+
+    # Application parameters...
+
     'version': version,
     'buildTag': buildTag,
+
+    # Path parameters...
+
     'rootPath': rootPath,
     'uploadPath': path.join(rootPath, 'uploads'),
+
+    # Image parameters...
+    #
+    #  - [Camera configuration - Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/configuration/camera.md)
+    #
+    #  Default dimensions: 2592x1944
+    #  Half size: 1296x972
+    #  Quarter size: 648x486
+
+    'imageWidth': 648,
+    'imageHeight': 486,
+
+    # Image file paramaters...
+
     'imageExt': '.image',
-    #  'imageFile': 'image.data',
-    #  'imageYamlFile': 'image.yaml',
     'imagesIndex': 'index.txt',
-    'channelsDir': 'channels',
+
+    # Logging...
+
     'outputLog': True,
     'outputColoredLog': True,
     'writeLog': True,
     'clearLogFile': False,
+
+    # Datetime formats...
+
     'dateTagFormat': '%y%m%d-%H%M',
     'dateTagPreciseFormat': '%y%m%d-%H%M%S',
     'shortDateFormat': '%Y.%m.%d-%H:%M',
     'preciseDateFormat': '%Y.%m.%d-%H:%M:%S',
     'logDateFormat': '%y%m%d-%H%M%S-%f',
     'detailedDateFormat': '%Y.%m.%d-%H:%M:%S.%f',
+
 }
 
 

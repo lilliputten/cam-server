@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+#!/usr/bin/env python2.7
 # @module util-update-build-tag
 # @since 2020.02.23, 00:58
 # @changed 2020.02.23, 01:58

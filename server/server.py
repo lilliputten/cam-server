@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.09.29, 22:02
+# @changed 2020.09.29, 23:56
 
 #  from flask import current_app as app
 from .app import app
@@ -18,17 +18,35 @@ from config import config
 from .logger import DEBUG
 
 from .upload import uploadImage
-from .listImages import listImages
+from .listImages import listImages, viewImage
 
 
 @app.route('/')
-def hello_world():
+def rootPageRoute():
+    """
+    Root page (images list)
+    """
     DEBUG('Get root', {
         'version': config['version'],
         'rootPath': config['rootPath'],
     })
     #  rootPath = config['rootPath']
     return listImages()
+
+
+#  @app.route('/image/<id>')  # TODO!
+
+
+@app.route('/viewImage/<id>')
+def viewImageRoute(id=None):
+    """
+    View image
+    """
+    # TODO: Create image viewer
+    return viewImage(id)
+
+
+# Tests...
 
 
 @app.route('/hello/')

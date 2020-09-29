@@ -1,11 +1,11 @@
-<!doctype html>
-<head>
-  <title>Hello from Flask</title>
-</head>
-<body class="body">
-  {% if name %}
-    <h1>Hello {{ name }}!</h1>
-  {% else %}
-    <h1>Hello World!</h1>
-  {% endif %}
-</body>
+{% extends 'base.html' %}
+
+{% block title %}Images archive{% endblock %}
+
+{% block content %}
+  <ul class="images">
+    {% for id in list %}
+      <li><a href="{{ url_for('viewImage', id=id) }}">{{ id }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

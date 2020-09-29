@@ -1,27 +1,27 @@
 # -*- coding:utf-8 -*-
 # @module listImages
 # @since 2020.09.29, 22:02
-# @changed 2020.09.29, 23:25
+# @changed 2020.09.29, 23:56
+
+#  from app import app
 
 import pathmagic  # noqa # Add parent path to import paths for import config in debug mode
 
-import os
-#  from os import path
+from os import path
+import yaml
 #  import datetime
-#  import yaml
+
+from flask import render_template
+#  from flask import url_for
+#  from flask import jsonify
+#  from flask import request
 
 from config import config
 
 from logger import DEBUG
 #  import errors
 
-
-def loadImagesList():
-    uploadPath = config['uploadPath']
-    indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
-    if os.path.isfile(indexFilePath):
-        with open(indexFilePath) as indexFile:
-            return map(lambda s: s.strip(), indexFile.readlines())
+from imageUtils import loadImagesList
 
 
 def listImages():
@@ -29,13 +29,31 @@ def listImages():
     DEBUG('listImages called', {
         'list': list,
     })
-    #  return render_template('listImages.html', list=list)
-    return 'listImages'
+    return render_template('listImages.html', list=list)
+    #  return 'listImages'
+
+
+def viewImage(id):
+    #  return render_template('viewImage.html', id=id)
+    uploadPath = config['uploadPath']
+    imageFilePath = path.join(uploadPath, id + config['imageExt'])
+    yamlFilePath = path.join(uploadPath, id + '.yaml')
+    if not path.isfile(imageFilePath) or not path.isfile(yamlFilePath):
+        #  return 'imageNotFound'
+        return render_template('imageNotFound.html', id=id)
+    params = yaml.load(yamlFilePath, Loader=yaml.FullLoader)
+    DEBUG('viewImage called', {
+        'params': params,
+    })
+    return render_template('viewImage.html', id=id, params=params)
 
 
 __all__ = [  # Exporting objects...
     'listImages',
+    'viewImage',
 ]
 
 if __name__ == '__main__':
-    listImages()
+    #  listImages()
+    result = viewImage('xxx')
+    DEBUG('test listImages', {'result': result})
