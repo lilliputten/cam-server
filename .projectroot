@@ -27,7 +27,10 @@
 
 - `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.pcss,*.styl,*.md,*.json,*.yml,*.yaml,*.sh`
 
+## Creating virtual environment
+
 ```shell
+# System global (if not installed)
 pip install setuptools virtualenv virtualenvwrapper-win
 
 # Project local:
@@ -37,8 +40,8 @@ virtualenv .venv
 .venv/bin/activate
 
 # Install all requirements:
-pip install -r requirements-local.txt
-pip install -r requirements-server.txt
+pip install -r requirements-dev.txt
+pip install -r requirements.txt
 # More pip examples:
 pip install Flask==1.0.2
 pip freeze Flask

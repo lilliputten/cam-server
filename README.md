@@ -1,4 +1,4 @@
-# Sample flask server
+# Cam flask photo receiver server
 
 TODO: Some minimal manual required (see some info in `.projectroot`)
 

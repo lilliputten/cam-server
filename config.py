@@ -2,7 +2,7 @@
 # @module config
 # @desc Universal server & client config
 # @since 2020.02.23, 02:18
-# @changed 2020.07.04, 03:45
+# @changed 2020.09.29, 22:02
 # See:
 #  - https://docs.python.org/3/library/configparser.html -- ???
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
@@ -39,15 +39,19 @@ config = {  # Default config
     'buildTag': buildTag,
     'rootPath': rootPath,
     'uploadPath': path.join(rootPath, 'uploads'),
-    'imageFile': 'image',
-    'imageYamlFile': 'image.yaml',
+    'imageExt': '.image',
+    #  'imageFile': 'image.data',
+    #  'imageYamlFile': 'image.yaml',
+    'imagesIndex': 'index.txt',
     'channelsDir': 'channels',
     'outputLog': True,
     'outputColoredLog': True,
     'writeLog': True,
     'clearLogFile': False,
     'dateTagFormat': '%y%m%d-%H%M',
+    'dateTagPreciseFormat': '%y%m%d-%H%M%S',
     'shortDateFormat': '%Y.%m.%d-%H:%M',
+    'preciseDateFormat': '%Y.%m.%d-%H:%M:%S',
     'logDateFormat': '%y%m%d-%H%M%S-%f',
     'detailedDateFormat': '%Y.%m.%d-%H:%M:%S.%f',
 }

@@ -1,13 +1,15 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.07.04, 01:47
+# @changed 2020.09.29, 22:02
 
 #  from flask import current_app as app
 from .app import app
 
-from flask import url_for, render_template
-from flask import request, jsonify
+from flask import render_template
+#  from flask import url_for
+from flask import jsonify
+from flask import request
 
 #  from os import path
 
@@ -16,6 +18,7 @@ from config import config
 from .logger import DEBUG
 
 from .upload import uploadImage
+from .listImages import listImages
 
 
 @app.route('/')
@@ -24,8 +27,8 @@ def hello_world():
         'version': config['version'],
         'rootPath': config['rootPath'],
     })
-    rootPath = config['rootPath']
-    return '(' + rootPath + ') Index page <a href="' + url_for('hello', name='Some Name') + '">hello</a>'
+    #  rootPath = config['rootPath']
+    return listImages()
 
 
 @app.route('/hello/')

@@ -3,6 +3,7 @@
 # @since 2020.02.23, 02:18
 # @changed 2020.04.23, 03:48
 
+import pathmagic  # noqa # Add parent path to import paths for import config in debug mode
 
 #  import os
 from os import path
@@ -11,6 +12,7 @@ import yaml
 from termcolor import colored
 
 import utils  # noqa
+
 from config import config
 
 
@@ -44,11 +46,11 @@ def DEBUG(title, data=None):
     global loggedEntries
     header = createHeader()
     logData = createLogData(title, data)  # Ensure trailing newline for record delimiting
-    fileMode = 'a'  # Default file mode: append
+    fileMode = 'ab'  # Default file mode: append
     if loggedEntries == 0:
         #  print '[Log started]\n'  # Insert empty line to stdout
         if config['clearLogFile']:
-            fileMode = 'w'  # Clear file on first entry
+            fileMode = 'wb'  # Clear file on first entry
     if config['writeLog']:
         rootPath = config['rootPath']  # os.getcwd()
         logFile = path.join(rootPath, 'log.txt')
