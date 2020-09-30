@@ -3,9 +3,12 @@
 {% block title %}Images archive{% endblock %}
 
 {% block content %}
+  <h1 class="mb-4 light">Images list</h1>
+  {% set count = namespace(value=list|length) %}
   <ul class="images">
-    {% for id in list %}
-      <li><a href="{{ url_for('viewImageRoute', id=id) }}">{{ id }}</li>
+    {% for image in list %}
+    <li><span class="count text-muted">{{count.value}}.</span> <a href="{{ url_for('viewImage', id=image['id']) }}">{{ image['timestamp'] }}</a></li>
+      {% set count.value = count.value - 1 %}
     {% endfor %}
   </ul>
 {% endblock %}

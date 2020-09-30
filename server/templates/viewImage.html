@@ -3,7 +3,16 @@
 {% block title %}{{id}} &#151; View image{% endblock %}
 
 {% block content %}
-  <div class="viewImage">
-    {{id}}
+  <div class="viewImage card">
+    <div class="card-body">
+      <h1 class="light mb-3">Show image {{timestamp}}</h1>
+      <div class="imageFrame mb-3"><img class="image" width="{{imageWidth}}" height="{{imageHeight}}" alt="{{timestamp}}" src="{{url_for('sendImageFile', id=id)}}"></div>
+      <!--
+      <p class="card-text">{{timestamp}}</p>
+      -->
+      <div class="btn-group">
+        <a type="button" class="btn btn-sm btn-outline-secondary" href="/list">Back to list</a>
+      </div>
+    </div>
   </div>
 {% endblock %}

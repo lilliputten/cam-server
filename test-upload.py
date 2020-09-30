@@ -10,7 +10,9 @@ remoteUrl = 'https://cam.lilliputten.ru/upload'
 
 url = remoteUrl if '--remote' in sys.argv else localUrl
 
-fin = open('test-image.jpg', 'rb')
+#  imgFile = 'test-image.jpg'
+imgFile = '!Work/200703-rpi-sample-image/image-quarter.jpg'
+fin = open(imgFile, 'rb')
 files = {'file': fin}
 try:
     r = requests.post(url, files=files)

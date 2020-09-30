@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.09.29, 22:02
+# @changed 2020.10.01, 00:41
 
 import os
 from os import path
@@ -34,7 +34,7 @@ def uploadImage(file):
 
     now = datetime.datetime.now()
     timestamp = now.strftime(config['preciseDateFormat'])
-    dateTag = now.strftime(config['dateTagPreciseFormat'])
+    id = now.strftime(config['dateTagPreciseFormat'])
 
     data = {
         'filename': filename,
@@ -64,16 +64,16 @@ def uploadImage(file):
         return {'error': 'Upload file creation error (see server log)'}
     finally:
         # Save image...
-        imageFilePath = os.path.join(uploadPath, dateTag + config['imageExt'])
+        imageFilePath = os.path.join(uploadPath, id + config['imageExt'])
         file.save(imageFilePath)
         # Save yaml...
-        yamlFilePath = os.path.join(uploadPath, dateTag + '.yaml')
+        yamlFilePath = os.path.join(uploadPath, id + '.yaml')
         yaml.safe_dump(data, open(yamlFilePath, 'wb'), encoding='utf-8', allow_unicode=True)
         # Update index file...
         indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
         with open(indexFilePath, 'ab') as indexFile:
-            indexFile.write(dateTag + '\n')
-        return {'status': 'success', 'timestamp': timestamp, 'dateTag': dateTag}
+            indexFile.write(id + ' ' + timestamp + '\n')
+        return {'status': 'success', 'timestamp': timestamp, 'id': id}
 
 
 __all__ = [  # Exporting objects...
