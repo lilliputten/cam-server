@@ -20,13 +20,12 @@ from flask import render_template
 from config import config
 
 from logger import DEBUG
-#  import errors
 
-from imageUtils import loadImagesList
+import imageUtils
 
 
 def listImages():
-    list = loadImagesList(True)
+    list = imageUtils.loadImagesList(True)
     DEBUG('listImages called', {
         'list': list,
     })
@@ -61,6 +60,13 @@ def viewImage(id):
         return render_template('viewImage.html', id=id, timestamp=timestamp, imageWidth=imageWidth, imageHeight=imageHeight, params=params)
 
 
+def viewLastImage():
+    id = imageUtils.getLastImageId()
+    if not id:
+        return render_template('noImages.html')
+    return viewImage(id)
+
+
 def sendImageFile(id):
     #  return render_template('viewImage.html', id=id)
     uploadPath = config['uploadPath']
@@ -91,6 +97,7 @@ def sendImageFile(id):
 __all__ = [  # Exporting objects...
     'listImages',
     'viewImage',
+    'viewLastImage',
     'sendImageFile',
 ]
 

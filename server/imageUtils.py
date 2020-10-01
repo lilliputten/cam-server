@@ -31,6 +31,21 @@ def loadImagesList(full=False):
             return list(reversed(data))
 
 
+def getLastImageId():
+    list = loadImagesList()
+    if list:
+        return list[0]
+
+
+def removeAllImages():
+    uploadPath = config['uploadPath']
+    #  filelist = [ file for file in os.listdir(mydir) if file.endswith('.bak') ]  # TODO: Filter example
+    DEBUG('imageUtils:removeAllImages', {'uploadPath': uploadPath})
+    for file in os.listdir(uploadPath):
+        DEBUG('imageUtils:removeAllImages: remove file', {'file': file})
+        os.remove(os.path.join(uploadPath, file))
+
+
 __all__ = [  # Exporting objects...
     'loadImagesList',
 ]
