@@ -20,6 +20,12 @@ from .upload import uploadImage
 import listImages  # import listImages, viewImage
 
 
+#  def env_override(value, key):
+#    return os.getenv(key, value)
+#
+#  environment.filters['env_override'] = env_override
+
+
 @app.route('/')
 @app.route('/list')
 def rootPage():
