@@ -50,7 +50,7 @@
       </div>
     </main>
 
-    {% if True or 'FLASK_ENV'|getenv == 'development' %}
+    {% if 'FLASK_ENV'|getenv == 'development' %}
     <script src="{{ url_for('static', filename='cdn/jquery-3.5.1.slim.js') }}"></script>
     <script src="{{ url_for('static', filename='cdn/bootstrap.js') }}"></script>
     {% else %}
