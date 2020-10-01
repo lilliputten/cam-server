@@ -24,6 +24,8 @@ ul.images .count {
   display: inline-block;
   width: 50px;
   opacity: .75;
+  text-align: right;
+  margin-right: 10px;
 }
 h1.light {
   font-weight: 300;

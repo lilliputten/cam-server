@@ -3,9 +3,12 @@
 # @since 2019.03.28, 21:32
 # @changed 2020.10.01, 00:41
 
+import pathmagic  # noqa
+
 #  from flask import current_app as app
 from .app import app
 
+from flask import redirect
 from flask import render_template
 #  from flask import url_for
 from flask import jsonify
@@ -16,14 +19,14 @@ from config import config
 from .logger import DEBUG
 
 from .upload import uploadImage
-#  from .listImages import listImages, viewImage
-import listImages  # import listImages, viewImage
+
+import listImages
+import removeImages
 
 
-#  def env_override(value, key):
-#    return os.getenv(key, value)
-#
-#  environment.filters['env_override'] = env_override
+#  DEBUG('Server started', {
+#      'FLASK_ENV': os.getenv('FLASK_ENV'),
+#  })
 
 
 @app.route('/')
@@ -53,8 +56,26 @@ def viewImage(id=None):
     """
     View image
     """
-    # TODO: Create image viewer
     return listImages.viewImage(id)
+
+
+@app.route('/last')
+def viewLastImage():
+    """
+    View last image
+    """
+    return listImages.viewLastImage()
+
+
+@app.route('/remove')
+def removeAllImages():
+    """
+    Remove all uploaded images
+    TODO: Remove image by id
+    """
+    # TODO: Detect referrer & return back?
+    removeImages.removeImages()
+    return redirect('/')
 
 
 # Tests...
