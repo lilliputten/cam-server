@@ -2,6 +2,7 @@
 #  app = Flask('server')
 
 import sys
-#  import os
+import os
 
-sys.dont_write_bytecode = True
+if os.getenv('FLASK_ENV') == 'development':
+    sys.dont_write_bytecode = True
