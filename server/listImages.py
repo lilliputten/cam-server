@@ -24,14 +24,14 @@ from logger import DEBUG
 import imageUtils
 
 
-def listImages():
+def listAllImages():
     list = imageUtils.loadImagesList(True)
-    DEBUG('listImages called', {
+    DEBUG('listAllImages called', {
         'list': list,
     })
     if not list or not len(list):
         return render_template('noImages.html')
-    return render_template('listImages.html', list=list)
+    return render_template('listAllImages.html', list=list)
 
 
 def viewImage(id):
@@ -95,13 +95,13 @@ def sendImageFile(id):
 
 
 __all__ = [  # Exporting objects...
-    'listImages',
+    'listAllImages',
     'viewImage',
     'viewLastImage',
     'sendImageFile',
 ]
 
 if __name__ == '__main__':
-    #  listImages()
+    #  listAllImages()
     result = viewImage('200930-225108')
     DEBUG('test listImages', {'result': result})

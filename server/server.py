@@ -14,9 +14,8 @@ from flask import render_template
 from flask import jsonify
 from flask import request
 
-from config import config
-
-from .logger import DEBUG
+#  from config import config
+#  from .logger import DEBUG
 
 from .upload import uploadImage
 
@@ -30,17 +29,12 @@ import removeImages
 
 
 @app.route('/')
-@app.route('/list')
 def rootPage():
     """
-    Root page (images list)
+    Default page (last image or all images list)
     """
-    DEBUG('Get root', {
-        'version': config['version'],
-        'rootPath': config['rootPath'],
-    })
-    #  rootPath = config['rootPath']
-    return listImages.listImages()
+    #  return listImages.listAllImages()
+    return listImages.viewLastImage()
 
 
 @app.route('/image/<id>')
@@ -57,6 +51,14 @@ def viewImage(id=None):
     View image
     """
     return listImages.viewImage(id)
+
+
+@app.route('/list')
+def listAllImages():
+    """
+    List images
+    """
+    return listImages.listAllImages()
 
 
 @app.route('/last')
