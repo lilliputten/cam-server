@@ -33,8 +33,9 @@ def rootPage():
     """
     Default page (last image or all images list)
     """
+    return redirect('/last')
     #  return listImages.listAllImages()
-    return listImages.viewLastImage()
+    #  return listImages.viewLastImage()
 
 
 @app.route('/image/<id>')

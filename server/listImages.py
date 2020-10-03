@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module listImages
 # @since 2020.09.29, 22:02
-# @changed 2020.10.01, 00:41
+# @changed 2020.10.04, 01:55
 
 #  from app import app
 
@@ -11,6 +11,7 @@ from os import path
 import yaml
 #  import datetime
 
+from flask import make_response
 from flask import send_file
 from flask import render_template
 #  from flask import url_for
@@ -64,12 +65,17 @@ def viewLastImage():
     id = imageUtils.getLastImageId()
     if not id:
         return render_template('noImages.html')
-    return viewImage(id)
+    #  return viewImage(id)
+    resp = make_response(viewImage(id))
+    resp.headers.set('Refresh', '30; url=/last')
+    return resp
 
 
 def sendImageFile(id):
     #  return render_template('viewImage.html', id=id)
     uploadPath = config['uploadPath']
+    if id == 'last':
+        id = imageUtils.getLastImageId()
     imageFilePath = path.join(uploadPath, id + config['imageExt'])
     yamlFilePath = path.join(uploadPath, id + '.yaml')
     if not path.isfile(imageFilePath) or not path.isfile(yamlFilePath):
