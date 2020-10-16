@@ -100,7 +100,9 @@ def profile(username):
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    result = uploadImage(request.files['file'])
+    ip = request.environ['REMOTE_ADDR']
+    file = request.files['file']
+    result = uploadImage(ip, file)
     return jsonify(result)
 
 

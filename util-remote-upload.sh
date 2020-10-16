@@ -20,10 +20,10 @@ shift
   # && $ARC_CMD "$ARCDIR/$ARCNAME" -C "$SRC" --exclude "*_" --exclude "*.sw?" "*" \
 
 echo "Remote server: $SERVER" \
-  && . "./util-local-pack-build.sh" \
+  && . "./util-local-pack.sh" \
   && echo "Cleaning up remote..." \
-  && $PLINK_CMD $SERVER "rm -Rf $REMOTE_TARGET_PATH/$REMOTE_DIR" \
-  && echo "Creating remote folders..." \
+  && $PLINK_CMD $SERVER "rm -Rf $REMOTE_TARGET_PATH/$REMOTE_DIR/*" \
+  && echo "Making sure that the required remote folders exist..." \
   && $PLINK_CMD $SERVER "mkdir -p -m 0777 $REMOTE_TARGET_PATH/$REMOTE_DIR $REMOTE_TARGET_PATH/$REMOTE_ARCDIR" \
   && echo "Copying archive to remote..." \
   && $CP_CMD "$ARCDIR/$ARCNAME" "$SERVER:$REMOTE_TARGET_PATH/$REMOTE_ARCDIR/" \

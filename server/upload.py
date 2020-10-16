@@ -27,7 +27,7 @@ mimeExtensions = mimeTypes.keys()  # {'aaa'}  # 'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-def uploadImage(file):
+def uploadImage(ip, file):
     filename = file.filename
     name, extension = path.splitext(filename)
     ext = extension[1:].lower()
@@ -37,6 +37,7 @@ def uploadImage(file):
     id = now.strftime(config['dateTagPreciseFormat'])
 
     data = {
+        'ip': ip,
         'filename': filename,
         'name': name,
         'ext': ext,
@@ -73,7 +74,7 @@ def uploadImage(file):
         indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
         with open(indexFilePath, 'ab') as indexFile:
             indexFile.write(id + ' ' + timestamp + '\n')
-        return {'status': 'success', 'timestamp': timestamp, 'id': id}
+        return {'status': 'success', 'timestamp': timestamp, 'id': id, 'ip': ip}
 
 
 __all__ = [  # Exporting objects...
