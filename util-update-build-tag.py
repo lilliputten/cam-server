@@ -1,5 +1,5 @@
-# -*- coding:utf-8 -*-
 #!/usr/bin/env python2.7
+# -*- coding:utf-8 -*-
 # @module util-update-build-tag
 # @since 2020.02.23, 00:58
 # @changed 2020.02.23, 01:58
@@ -30,7 +30,7 @@ version = pkgConfig['version']
 
 buildTag = 'v.' + version + '-' + dateTag
 
-print 'Updated build tag:', buildTag
+print('Updated build tag: ' + buildTag)
 
 with open(buildTagFilename, 'w') as file:
     file.write(buildTag)

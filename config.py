@@ -57,6 +57,11 @@ config = {  # Default config
     'imageWidth': 648,
     'imageHeight': 486,
 
+    # Client parameters... (UNUSED)
+
+    'localImageFile': 'local-image.jpg',
+    'remoteUrl': 'https://cam.lilliputten.ru/upload',
+
     # Image file paramaters...
 
     'imageExt': '.image',
