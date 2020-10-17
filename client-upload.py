@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # @desc Upload image from `local-image.jpg` (created using `client-make-image.sh`) to server
 # @since 2020.10.16, 23:31
-# @changed 2020.10.17, 00:53
+# @changed 2020.10.17, 03:55
 #
 # TODO:
 # - Use config parameters for image file name and remote url?
@@ -11,6 +11,7 @@
 # - http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file
 
 import requests
+from requests.auth import HTTPBasicAuth
 import sys
 from os import path
 
@@ -33,7 +34,7 @@ try:
     print('Opening file ' + imgFile)
     fh = open(imgFile, 'rb')
     print('Uploading file to ' + remoteUrl)
-    r = requests.post(remoteUrl, files={'file': fh})
+    r = requests.post(remoteUrl, files={'file': fh}, auth=HTTPBasicAuth('guest', '123'))
     print(str(r.text).strip())  # Display response
 #  except requests.exceptions.RequestException as e:  # Process network error in different way...
 #      raise SystemExit(e)
