@@ -1,5 +1,6 @@
 # Client files
 local-image.*
+test-image.*
 
 # Unused & temp files
 \!UNUSED

@@ -1,7 +1,7 @@
 #!/bin/sh
 # @desc Make & upload camera shot
 # @since 2020.10.16, 23:31
-# @changed 2020.10.17, 02:37
+# @changed 2020.10.17, 04:21
 
 BASEDIR=`dirname "$0"`
 case `uname` in
@@ -11,7 +11,10 @@ esac
 MAKE_IMG_CMD="python $BASEDIR/client-make-image.py"
 # MAKE_IMG_CMD="raspistill -w 648 -h 486 -o local-image.jpg"
 
-$MAKE_IMG_CMD \
+DATE=`date "+%Y.%m.%d %H:%M:%S"`
+
+echo "$DATE: Started client-make-and-upload-image.sh" \
+  && $MAKE_IMG_CMD \
   && python $BASEDIR/client-upload.py \
   && echo OK
 

@@ -34,6 +34,7 @@ try:
     print('Opening file ' + imgFile)
     fh = open(imgFile, 'rb')
     print('Uploading file to ' + remoteUrl)
+    # TODO: To store auth params in system variables?
     r = requests.post(remoteUrl, files={'file': fh}, auth=HTTPBasicAuth('guest', '123'))
     print(str(r.text).strip())  # Display response
 #  except requests.exceptions.RequestException as e:  # Process network error in different way...
