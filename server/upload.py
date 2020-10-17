@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.17, 02:49
+# @changed 2020.10.17, 04:45
 
 import os
 from os import path
@@ -33,7 +33,8 @@ def uploadImage(ip, file):
     ext = extension[1:].lower()
 
     now = datetime.datetime.now()
-    timestamp = now.strftime(config['preciseDateFormat'])
+    timestamp = now.strftime(config['shortDateFormat'])
+    #  timestamp = now.strftime(config['preciseDateFormat'])
     id = ip + '-' + now.strftime(config['dateTagPreciseFormat'])
 
     data = {
