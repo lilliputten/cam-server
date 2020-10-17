@@ -18,6 +18,6 @@ AuthName CamServer
 Require valid-user
 # Require Group demo
 
-<Files ~ "^(upload)$">
+<Files ~ "^(.*upload.*)$">
 Satisfy any
 </Files>
