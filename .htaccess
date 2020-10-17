@@ -1,5 +1,5 @@
 # @since 2020.10.17, 03:05
-# @changed 2020.10.17, 03:13
+# @changed 2020.10.17, 03:18
 # see:
 # - Groups: `vim ~/security/.htgroups`
 # - Users: `vim ~/security/.htpasswd`
@@ -9,6 +9,9 @@
 # Options -Indexes
 # DirectoryIndex SyncInterface.php
 # AddDefaultCharset utf-8
+
+AuthUserFile /home/g/goldenjeru/.security/.htpasswd
+AuthGroupFile /home/g/goldenjeru/.security/.htgroups
 
 AuthType Basic
 AuthName CamServer
