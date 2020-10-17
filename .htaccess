@@ -15,8 +15,8 @@ AuthGroupFile /home/g/goldenjeru/.security/.htgroups
 
 AuthType Basic
 AuthName CamServer
-#Require valid-user
-Require Group demo
+Require valid-user
+# Require Group demo
 
 # <Files ~ "^(x|Remote).*\.php$">
 # Satisfy any
