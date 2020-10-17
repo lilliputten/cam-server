@@ -68,7 +68,7 @@ def viewLastImage():
         return render_template('noImages.html')
     #  return viewImage(id)
     resp = make_response(viewImage(id))
-    # TODO: Store refresh period in congig; use dynamic reloading (SPA interface).
+    # TODO: Store refresh period in congig; use dynamic reloading (SPA interface). (Use websocket for new image upload events?)
     resp.headers.set('Refresh', '150; url=/last')
     return resp
 
