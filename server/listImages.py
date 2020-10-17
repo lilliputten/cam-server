@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module listImages
 # @since 2020.09.29, 22:02
-# @changed 2020.10.04, 01:55
+# @changed 2020.10.17, 03:27
 
 #  from app import app
 
@@ -68,7 +68,8 @@ def viewLastImage():
         return render_template('noImages.html')
     #  return viewImage(id)
     resp = make_response(viewImage(id))
-    resp.headers.set('Refresh', '30; url=/last')
+    # TODO: Store refresh period in congig; use dynamic reloading (SPA interface).
+    resp.headers.set('Refresh', '150; url=/last')
     return resp
 
 
