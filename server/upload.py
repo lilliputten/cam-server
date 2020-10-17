@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.01, 00:41
+# @changed 2020.10.17, 02:49
 
 import os
 from os import path
@@ -34,7 +34,7 @@ def uploadImage(ip, file):
 
     now = datetime.datetime.now()
     timestamp = now.strftime(config['preciseDateFormat'])
-    id = now.strftime(config['dateTagPreciseFormat'])
+    id = ip + '-' + now.strftime(config['dateTagPreciseFormat'])
 
     data = {
         'ip': ip,
@@ -73,7 +73,7 @@ def uploadImage(ip, file):
         # Update index file...
         indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
         with open(indexFilePath, 'ab') as indexFile:
-            indexFile.write(id + ' ' + timestamp + '\n')
+            indexFile.write(id + ' ' + ip + ' ' + timestamp + '\n')
         return {'status': 'success', 'timestamp': timestamp, 'id': id, 'ip': ip}
 
 

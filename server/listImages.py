@@ -45,6 +45,7 @@ def viewImage(id):
     with open(yamlFilePath) as yamlFilePathFile:
         params = yaml.load(yamlFilePathFile, Loader=yaml.FullLoader)
         timestamp = params['timestamp']
+        ip = params['ip']
         imageWidth = config['imageWidth']
         imageHeight = config['imageHeight']
         DEBUG('viewImage called', {
@@ -58,7 +59,7 @@ def viewImage(id):
         # - mimeType: image/jpeg
         # - name: test-image
         # - timestamp: 2020.09.30-22:51:08
-        return render_template('viewImage.html', id=id, timestamp=timestamp, imageWidth=imageWidth, imageHeight=imageHeight, params=params)
+        return render_template('viewImage.html', id=id, ip=ip, timestamp=timestamp, imageWidth=imageWidth, imageHeight=imageHeight, params=params)
 
 
 def viewLastImage():

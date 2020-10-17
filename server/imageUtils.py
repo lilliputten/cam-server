@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module imageUtils
 # @since 2020.09.29, 23:56
-# @changed 2020.10.01, 00:41
+# @changed 2020.10.17, 02:49
 
 import pathmagic  # noqa # Add parent path to import paths for import config in debug mode
 
@@ -13,12 +13,17 @@ from logger import DEBUG
 
 
 def parseIndexLine(s, full=False):
-    parts = s.split(' ', 1)
-    id = parts[0]
-    timestamp = parts[1]
-    if full:
-        return {'id': id, 'timestamp': timestamp}
-    return id
+    try:
+        parts = s.split(' ')
+        id = parts[0]
+        ip = parts[1]
+        timestamp = parts[2]
+        if full:
+            return {'id': id, 'ip': ip, 'timestamp': timestamp}
+        return id
+    except Exception as e:
+        DEBUG('imageUtils:parseIndexLine: error', {'error': str(e), 's': s})
+        raise e
 
 
 def loadImagesList(full=False):
