@@ -1,15 +1,65 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "react-app-rewired",
+      "program": "${workspaceRoot}/node_modules/react-app-rewired/scripts/start.js",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+    },
+    {
+      "name": "create-react-app",
+      "program": "${workspaceRoot}/node_modules/react-scripts/bin/react-scripts.js",
+      "args": [
+        "start",
+      ],
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+    },
+    {
+      "name": "jest",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": [
+        "--verbose",
+        "routesFactory",
+        // "licensesSupport",
+        // "BEMDOM",
+        // "postcss",
+        // "MicroEvents",
+        // "src/BEMDOM",
+        // "core/Inherit",
+      ],
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      // "outputCapture" : "std",
+      // "protocol": "inspector",
+      "console": "integratedTerminal", // Allows debug stops in tests and code jumps from output
+      // "console": "internalConsole",
+      // "console": "externalTerminal",
+    },
+    {
+      "name": "webpack",
+      "program": "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
+      "args": [
+        "--mode",
+        "development",
+      ],
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+    },
+  ]
 }

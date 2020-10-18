@@ -1,5 +1,7 @@
 {
     "files.exclude": {
+        "**/*_": true,
+        "**/*~": true,
         "**/*.tmp": true,
         "**/.*.sw?": true,
         "**/*.pyc": true
