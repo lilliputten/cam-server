@@ -1,9 +1,13 @@
 " vim: ft=vim
+" @desc Vim config override file
+" @changed 2020.10.19, 01:23
 
 let g:ale_linters = {
 \   'python': [ 'flake8' ],
 \   'javascript': [ 'eslint' ],
 \   'typescript': [ 'tsserver' ],
+\   'pcss': [ 'stylelint' ],
+\   'css': [ 'stylelint' ],
 \}
 
 " variants:
@@ -11,6 +15,11 @@ let g:ale_linters = {
 " \   'typescript': [ 'tsserver' ],
 " \   'python': [ 'flake8' ],
 
-let g:ale_css_stylelint_options = '--syntax scss'
-let g:ale_stylus_stylelint_options = '--syntax scss'
+" let g:ale_stylus_stylelint_options = '--syntax scss'
+let g:ale_postcss_stylelint_options = '--syntax scss'
+let g:ale_less_stylelint_options = '--syntax scss' " Used for pcss also (WTF?)
 
+" Add exclusions for Ctrl-P lookup
+" See Plugins.vim, CtrlP section
+let g:ctrlp_custom_ignore['dir'] = substitute(g:ctrlp_custom_ignore['dir'], ')\$', "|!Work|!Patches|!Docs|!ARC*|!UNUSED)$", "g")
+let g:ctrlp_custom_ignore['file'] = substitute(g:ctrlp_custom_ignore['file'], '))\$', "|session)|build-tag.txt)$", "g")
