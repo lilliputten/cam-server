@@ -1,0 +1,11 @@
+#!/sbin/sh
+# @overview Patch tool (patch-tool) config file
+# @since 2020.06.26, 18:03
+# @changed 2020.06.26, 18:04
+
+# Root folder
+ROOTCD="node_modules"
+
+# Target path relative to root
+PATCHCD="webpack-concat-plugin"
+

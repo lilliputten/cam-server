@@ -1,0 +1,20 @@
+--- release.js.orig	Thu Jul 18 13:46:31 2019
++++ release.js	Thu Jul 18 14:50:16 2019
+@@ -236,7 +236,7 @@
+                 var concat = new Concat(!!this.settings.sourceMap, this.finalFileName, '\n');
+ 
+                 Object.keys(allFiles).forEach(function (fileName) {
+-                    concat.add(fileName, allFiles[fileName]);
++                    concat.add(fileName, allFiles[fileName], { sourcesContent: [allFiles[fileName]] });
+                 });
+ 
+                 content = concat.content.toString();
+@@ -363,7 +363,7 @@
+                     var injectToHtml = function injectToHtml() {
+                         htmlPluginData.assets.webpackConcat = htmlPluginData.assets.webpackConcat || {};
+ 
+-                        assetPath = getAssetPath();
++                        assetPath = getAssetPath().replace(/\\/g, '/');
+ 
+                         htmlPluginData.assets.webpackConcat[self.settings.name] = assetPath;
+ 

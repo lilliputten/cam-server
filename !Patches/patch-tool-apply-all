@@ -1,0 +1,24 @@
+#!/sbin/sh
+# @overview Patch utility script
+# @desc Run in patch collection root folder.
+# @since 2018.03.05, 00:00
+# @changed 2020.08.26, 16:11
+
+SCRIPT_PATH=`dirname "$0"`
+SCRIPT_PATH=`realpath "$SCRIPT_PATH"`
+
+# Saving source path
+ORIGPATH=`pwd`
+
+# Scan all `patch-config`s...
+DIRS=`find_ . -name "patch-config.sh" \
+  | sed 's/[\\]/\//g;s/\/[^\/]*$//g'`
+
+# Process all found folders...
+for D in $DIRS; do
+  echo ""
+  echo "Processing $D..."
+  cd "$D"
+  sh "$SCRIPT_PATH/patch-tool-apply"
+  cd "$ORIGPATH"
+done
