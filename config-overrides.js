@@ -16,8 +16,8 @@ const
 
   configCss = {}, // require('./src/config/__css/config__css'),
 
-  /** postcssPlugins ** {{{ */
   postcssPlugins = [
+    require('postcss-flexbugs-fixes'),
     require('postcss-import'),
     require('postcss-mixins')({
       mixinsDir: path.join(prjRoot, 'src', 'blocks', '!mixins'),
@@ -35,23 +35,31 @@ const
     require('postcss-color-function'), // https://github.com/postcss/postcss-color-function
     require('postcss-calc')(),
     require('postcss-nested-ancestors'), // https://github.com/toomuchdesign/postcss-nested-ancestors
-    require('postcss-nested'),
-    require('rebem-css'),
+    require('postcss-nested'), // https://github.com/postcss/postcss-nested
+    // require('rebem-css'),
     require('postcss-url')({ url: 'rebase' }),
-    require('autoprefixer')(),
+    // require('autoprefixer')(),
+    require('postcss-preset-env')({
+      autoprefixer: {
+        flexbox: 'no-2009',
+      },
+      stage: 3,
+    }),
     require('postcss-reporter')(),
-  ]/*}}}*/
+    require('postcss-normalize')(),
+  ]
 ;
 
-module.exports = function override(config/* , env */) {
-  // use any rewires here ;-) You are welcome!
-
+module.exports = (config/* , env */) => {
   // config = rewireTypescript(config, env);
-
   config = rewirePostcss(config, {
+    // test: /\.pcss$/,
     parser: require('postcss-scss'),
     plugins: () => postcssPlugins,
+    // plugins: () => [
+    //   require('postcss-nested'),
+    // ],
+    // sourceMap: true,
   });
-
   return config;
 };
