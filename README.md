@@ -2,7 +2,8 @@
 
 TODO: Some minimal manual required (see some info in `.projectroot`)
 
-## React app
+
+## React spa app
 
 The project was bootstrapped with:
 
@@ -10,9 +11,31 @@ The project was bootstrapped with:
 - [Adding TypeScript](https://create-react-app.dev/docs/adding-typescript/),
 - [React App Rewired](https://github.com/timarney/react-app-rewired);
 
+
+## API
+
+Basic api structure:
+
+- GET `/api/images`: Get all images list.
+- GET `/api/last`: Get last image info.
+- GET `/api/images/{id}`: Get specific image info.
+- POST `/api/images/add`: Add (upload) new image. (Duplicates `/upload`?)
+- DELETE `/api/images`: Delete all images.
+- DELETE `/api/images/{id}`: Delete specific image.
+
+See also:
+
+- [JSON:API — Latest Specification (v1.0)](https://jsonapi.org/format/)
+- [JSON API – работаем по спецификации / Блог компании Конференции Олега Бунина (Онтико) / Хабр](https://habr.com/ru/company/oleg-bunin/blog/433322/)
+- [REST — Википедия](https://ru.wikipedia.org/wiki/REST)
+
+
 ## Server
 
-Images server runs on python/flask platform. It has 3 interfaces: template-based bootstrap application, api interface (json), react spa application (overt api; in progress).
+Images server runs on python/flask platform.
+
+It has 3 interfaces: template-based bootstrap application, api interface (json), react spa application (overt api; in progress).
+
 
 ## Camera interface
 
@@ -78,5 +101,5 @@ python /home/pi/cam-client/client-make-image.py >>  /home/pi/cam-client/cron.log
 
 
 <!--
- @changed 2020.10.18, 20:24
+ @changed 2020.10.18, 20:48
 -->
