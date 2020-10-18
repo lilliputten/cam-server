@@ -1,11 +1,16 @@
 /** @module index
  *  @since 2020.10.18, 21:16
- *  @changed 2020.10.18, 21:16
+ *  @changed 2020.10.18, 22:17
  */
+
+import 'es5-shim/es5-shim';
+import 'es5-shim/es5-sham';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.pcss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

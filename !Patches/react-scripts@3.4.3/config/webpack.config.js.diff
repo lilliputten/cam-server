@@ -1,0 +1,11 @@
+--- ./webpack.config.js.orig	2020-10-18 22:42:22.053080100 +0300
++++ ./webpack.config.js	2020-10-19 00:27:54.075390400 +0300
+@@ -55,7 +55,7 @@
+ const useTypeScript = fs.existsSync(paths.appTsConfig);
+ 
+ // style files regexes
+-const cssRegex = /\.css$/;
++const cssRegex = /\.(pcss|css)$/; // Add `pcss` extension for processing postcss modules
+ const cssModuleRegex = /\.module\.css$/;
+ const sassRegex = /\.(scss|sass)$/;
+ const sassModuleRegex = /\.module\.(scss|sass)$/;

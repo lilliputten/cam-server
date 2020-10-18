@@ -1,6 +1,11 @@
+/** @module App
+ *  @since 2020.10.18, 21:16
+ *  @changed 2020.10.18, 22:17
+ */
+
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.pcss';
 
 function App() {
   return (
