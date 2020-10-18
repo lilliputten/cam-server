@@ -1,4 +1,4 @@
-# Cam flask photo receiver server, raspberry camera client
+# Cam flask photo receiver server & raspberry camera client
 
 TODO: Some minimal manual required (see some info in `.projectroot`)
 

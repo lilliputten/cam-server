@@ -1,12 +1,12 @@
 {
-  "name": "200703-cam-server",
+  "name": "cam-server",
   "demo-server": "http://cam.lilliputten.ru/",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "changed": "2020.10.17, 01:32",
   "author": "lilliputten <igor@lilliputten.ru>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com/lilliputten/200703-cam-server"
+    "url": "git@github.com/lilliputten/cam-server"
   }
 }
