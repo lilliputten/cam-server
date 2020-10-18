@@ -1,3 +1,8 @@
+/** @module index
+ *  @since 2020.10.18, 21:16
+ *  @changed 2020.10.18, 21:16
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
