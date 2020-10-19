@@ -9,7 +9,8 @@
     "type": "git",
     "url": "git@github.com/lilliputten/cam-server"
   },
-  "dependencies": {
+  "devDepndencies": {
+    "dateformat": "^3.0.3",
     "npm-package-user-scripts-list": "^0.1.10",
     "npm-run-all": "^4.1.5"
   },
@@ -21,8 +22,5 @@
     "update-build-time": "echo --Update build timestamp-- && node util-update-build-time.js",
     "update-build-variables": "echo --Update build properties-- && sh util-update-build-variables.sh",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
-  },
-  "devDependencies": {
-    "dateformat": "^3.0.3"
   }
 }
