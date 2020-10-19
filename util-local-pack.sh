@@ -1,5 +1,5 @@
 #!/bin/sh
-# @desc Create archive for upload
+# @desc Create raspberry client code archive for upload to remote device
 # @changed 2020.10.17, 00:56
 
 # # If no required arguments specified...
@@ -23,7 +23,7 @@ echo "Creating archive: '$ARCNAME' in folder '$ARCDIR'..." \
   --exclude "*.pyc" \
   --exclude "*.bak" --exclude "*.tmp" --exclude "*~"  --exclude "*_" --exclude "*.sw?" \
   --exclude "static" --exclude "templates" \
-  "build-tag*" \
+  "build-*" \
   "client-*" \
   "config*" \
   "*.md" \

@@ -1,5 +1,5 @@
 #!/bin/sh
-# @desc Restart node server on remote
+# @desc Execute command on remote raspberry device
 # @changed 2020.02.06, 14:27
 
 # If no arguments specified...

@@ -1,5 +1,5 @@
 #!/bin/sh
-# @desc Upload/unpack packed build to remote server
+# @desc Upload/unpack packed raspberry client code to remote device
 # @changed 2020.02.06, 12:06
 
 # If no required arguments specified...
