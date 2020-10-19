@@ -1,8 +1,8 @@
 {
   "name": "cam-server",
   "demo-server": "http://cam.lilliputten.ru/",
-  "version": "0.0.3g",
-  "changed": "2020.10.19, 03:17",
+  "version": "0.0.3.001",
+  "changed": "2020.10.19, 03:18",
   "author": "lilliputten <igor@lilliputten.ru>",
   "license": "MIT",
   "repository": {
