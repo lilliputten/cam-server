@@ -8,5 +8,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com/lilliputten/cam-server"
+  },
+  "scripts": {
+    "postinstall": "echo --Postinstall cam-client-app-build link (posix commands used)-- && sh ./util-init-cam-client-app-build.sh"
   }
 }

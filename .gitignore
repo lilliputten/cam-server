@@ -35,6 +35,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+server/static/cam-client-app-build/
 develop-eggs/
 dist/
 downloads/
