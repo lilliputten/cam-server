@@ -25,13 +25,18 @@ import removeImages
 import mimetypes
 
 
+#  DEBUG('Server started', {
+#      'FLASK_ENV': os.getenv('FLASK_ENV'),
+#  })
+
+
 # Allow svg files serving (fix server error)
 mimetypes.add_type('image/svg+xml', '.svg')
 
 
-#  DEBUG('Server started', {
-#      'FLASK_ENV': os.getenv('FLASK_ENV'),
-#  })
+@app.route('/static/<svgFile>.svg')
+def serve_content(svgFile):
+    return file('static/'+svgFile+'.svg').read()
 
 
 @app.route('/')
