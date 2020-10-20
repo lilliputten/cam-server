@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.20, 23:43
+# @changed 2020.10.21, 00:47
 
 import pathmagic  # noqa
 
-import os
+#  import os
 
 #  from flask import current_app as app
 from .app import app
@@ -16,15 +16,13 @@ from flask import render_template
 from flask import jsonify
 from flask import request
 
-from config import config
+#  from config import config
 #  from .logger import DEBUG
 
 from .upload import uploadImage
 
 import listImages
 import removeImages
-
-import mimetypes
 
 
 #  DEBUG('Server started', {
@@ -33,10 +31,13 @@ import mimetypes
 
 
 @app.route('/app')
-def serveAppFile(svgFile):
-    clientTemplatePath = config['clientTemplatePath']
-    filePath = os.path.join(clientTemplatePath, 'index.html')
-    return file(filePath).read()
+def serveAppFile():
+    #  # Method 1: Using `file().read()`
+    #  clientTemplatePath = config['clientTemplatePath']
+    #  filePath = os.path.join(clientTemplatePath, 'index.html')
+    #  return file(filePath).read()
+    # Method 2: Using `send_static_file()`
+    return app.send_static_file('index.html')
 
 
 @app.route('/')
