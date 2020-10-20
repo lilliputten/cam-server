@@ -3,20 +3,27 @@
 # @since 2020.07.04, 01:43
 # @changed 2020.07.04, 01:43
 
+import pathmagic  # noqa
+
 import os
 
 from flask import Flask
-#  from view import tags
 
-app = Flask(__name__)
+from config import config
+
+
+#  rootPath = config['rootPath']
+#  clientStaticPath = config['clientStaticPath']
+clientTemplatePath = config['clientTemplatePath']
+
+app = Flask(__name__,
+            static_url_path='',
+            static_folder=clientTemplatePath)
 
 
 @app.template_filter()
 def getenv(key):
     return os.getenv(key)
-
-
-#  environment.filters['env_override'] = env_override
 
 
 __all__ = [  # Exporting objects...

@@ -20,6 +20,11 @@ buildTagFilename = path.join(rootPath, 'build-tag.txt')
 packageFilename = path.join(rootPath, 'package.json')
 #  print 'config: packageFilename', packageFilename  # DEBUG
 
+uploadPath = path.join(rootPath, 'uploads')
+
+clientTemplatePath = path.join(rootPath, 'cam-client-app-build')
+clientStaticPath = path.join(clientTemplatePath, 'static')
+
 version = 'Testing'
 buildTag = 'Testing'
 
@@ -44,7 +49,12 @@ config = {  # Default config
     # Path parameters...
 
     'rootPath': rootPath,
-    'uploadPath': path.join(rootPath, 'uploads'),
+    'uploadPath': uploadPath,
+
+    # Generated client path (see `cam-client-app-build`)
+
+    'clientStaticPath': clientStaticPath,
+    'clientTemplatePath': clientTemplatePath,
 
     # Image parameters...
     #

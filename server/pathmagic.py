@@ -8,4 +8,11 @@ import sys
 import os
 import inspect
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))))
+
+rootPath = os.path.dirname(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
+sys.path.insert(0, rootPath)
+
+
+__all__ = [  # Exporting objects...
+    'rootPath',
+]
