@@ -32,16 +32,11 @@ import mimetypes
 #  })
 
 
-# Allow svg files serving (fix server error)
-mimetypes.add_type('image/svg+xml', '.svg')
-
-
-@app.route('/static/<svgFile>.svg')
-def serveSvgFile(svgFile):
-    clientStaticPath = config['clientStaticPath']
-    filePath = os.path.join(clientStaticPath, svgFile + '.svg')
-    return 'svg: %s' % filePath
-    #  return file(filePath).read()
+@app.route('/app')
+def serveAppFile(svgFile):
+    clientTemplatePath = config['clientTemplatePath']
+    filePath = os.path.join(clientTemplatePath, 'index.html')
+    return file(filePath).read()
 
 
 @app.route('/')
