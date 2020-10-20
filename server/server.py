@@ -37,7 +37,7 @@ mimetypes.add_type('image/svg+xml', '.svg')
 
 
 @app.route('/static/<svgFile>.svg')
-def serve_content(svgFile):
+def serveSvgFile(svgFile):
     clientStaticPath = config['clientStaticPath']
     filePath = os.path.join(clientStaticPath, svgFile + '.svg')
     return 'svg: %s' % filePath
