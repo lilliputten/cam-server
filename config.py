@@ -2,7 +2,7 @@
 # @module config
 # @desc Universal server & client config
 # @since 2020.02.23, 02:18
-# @changed 2020.09.29, 22:02
+# @changed 2020.10.20, 23:29
 # See:
 #  - https://docs.python.org/3/library/configparser.html -- ???
 #  - https://stackoverflow.com/questions/9590382/forcing-python-json-module-to-work-with-ascii
