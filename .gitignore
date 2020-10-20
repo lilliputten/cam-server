@@ -3,6 +3,7 @@ local-image.*
 test-image.*
 
 # Unused & temp files
+package-lock.json
 \!UNUSED
 ~*
 *_
