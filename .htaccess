@@ -1,5 +1,5 @@
 # @since 2020.10.17, 03:05
-# @changed 2020.10.17, 03:55
+# @changed 2020.10.21, 00:08
 # see:
 # - Groups: `vim ~/security/.htgroups`
 # - Users: `vim ~/security/.htpasswd`
@@ -17,4 +17,8 @@ AuthType Basic
 AuthName CamServer
 Require valid-user
 # Require Group demo
+
+<Files ~ "^(manifest\.json)$">
+Satisfy any
+</Files>
 
