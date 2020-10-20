@@ -5,6 +5,8 @@
 
 import pathmagic  # noqa
 
+import os
+
 #  from flask import current_app as app
 from .app import app
 
@@ -14,7 +16,7 @@ from flask import render_template
 from flask import jsonify
 from flask import request
 
-#  from config import config
+from config import config
 #  from .logger import DEBUG
 
 from .upload import uploadImage
@@ -36,7 +38,8 @@ mimetypes.add_type('image/svg+xml', '.svg')
 
 @app.route('/static/<svgFile>.svg')
 def serve_content(svgFile):
-    return file('static/'+svgFile+'.svg').read()
+    clientStaticPath = config['clientStaticPath']
+    return file(os.path.join(clientStaticPath, svgFile + '.svg')).read()
 
 
 @app.route('/')
