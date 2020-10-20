@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.20, 23:29
+# @changed 2020.10.20, 23:43
 
 import pathmagic  # noqa
 
@@ -21,6 +21,12 @@ from .upload import uploadImage
 
 import listImages
 import removeImages
+
+import mimetypes
+
+
+# Allow svg files serving (fix server error)
+mimetypes.add_type('image/svg+xml', '.svg')
 
 
 #  DEBUG('Server started', {
