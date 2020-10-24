@@ -11,4 +11,5 @@ REM  call .venv/Scripts/activate
 REM  Install project dependencies...
 pip install -r requirements-dev.txt
 REM  call .venv/Scripts/deactivate
+echo "Use next command to activate venv: 'call .venv/Scripts/activate'"
 
