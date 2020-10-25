@@ -25,7 +25,7 @@
 
 ## Module extensions
 
-- `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.pcss,*.styl,*.md,*.json,*.yml,*.yaml,*.sh`
+- `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.pcss,*.styl,*.md,*.json,*.yml,*.yaml,*.sh,*.md,*.txt`
 
 ## Creating virtual environment
 

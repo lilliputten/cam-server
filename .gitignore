@@ -2,19 +2,20 @@
 local-image.*
 test-image.*
 
+# Auto-generated files
+uploads
+log*.txt
+*.log
+
 # Unused & temp files
 package-lock.json
 \!UNUSED
 ~*
 *_
 zia*
-log*.txt
-*.log
 *.sw?
 *~
 \!ARC*
-uploads
-__pycache__
 *.session
 
 # Include special jest files/folders

@@ -7,7 +7,7 @@ pip install setuptools virtualenv virtualenvwrapper-win
 REM  Create venv...
 python -m virtualenv -p "C:/Python27/python.exe" .venv
 REM  REM  Activate venv
-REM  call .venv/Scripts/activate
+call .venv/Scripts/activate
 REM  Install project dependencies...
 pip install -r requirements-dev.txt
 REM  call .venv/Scripts/deactivate
