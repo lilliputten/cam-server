@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module externalApi
 # @since 2020.10.26, 03:19
-# @changed 2020.10.26, 18:03
+# @changed 2020.10.26, 18:18
 #
 #  Basic api structure (from `README.md`):
 #
@@ -89,7 +89,7 @@ def fallback(route):
         'route': route,
         'method': request.method,
     }
-    DEBUG('externalApi:fallback', debugData)
+    DEBUG('externalApi:fallback: Method is not defined', debugData)
     errorStr = 'The route \'/api/{route}\' is not implemented for method \'{method}\''.format(**debugData)
     return jsonify({'error': errorStr})
 
