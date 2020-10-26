@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.21, 00:47
+# @changed 2020.10.26, 03:26
 
 import pathmagic  # noqa
 
@@ -24,10 +24,16 @@ from .upload import uploadImage
 import listImages
 import removeImages
 
+from externalApi import externalApi
+
 
 #  DEBUG('Server started', {
 #      'FLASK_ENV': os.getenv('FLASK_ENV'),
+#      'buildTag': config['buildTag'],
 #  })
+
+
+app.register_blueprint(externalApi)
 
 
 @app.route('/app')

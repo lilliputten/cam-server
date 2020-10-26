@@ -1,5 +1,6 @@
 # Changelog
 
+- 2020.10.26, 06:10 -- Errors catching, exernal api (in progress).
 - 2020.10.19, 04:51 -- Dropped react client app repository/used linked build folder (TODO!)
 - 2020.10.17, 03:54 -- Added authentification options for client upload script.
 - 2020.10.17, 03:23 -- v.0.0.2: Maintenance & client uploading tools, added client ip in image properties.
@@ -9,5 +10,5 @@
 - 2020.07.04, 03:43 -- Configuration, basic image upload receiver, uploader skeeleton (`test-upload.py`).
 
 <!--
- @changed 2020.10.19, 04:51
+ @changed 2020.10.26, 06:10
 -->

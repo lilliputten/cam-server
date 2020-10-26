@@ -36,10 +36,39 @@ def loadImagesList(full=False):
             return list(reversed(data))
 
 
-def getLastImageId():
-    list = loadImagesList()
+def getImageData(id):
+    list = loadImagesList(True)
+    # TODO: Check for last image exists?
     if list:
         return list[0]
+
+
+def getLastImageData():
+    list = loadImagesList(True)
+    # TODO: Check for last image exists?
+    if list:
+        return list[0]
+
+
+def getLastImageId():
+    data = getLastImageData()
+    # TODO: Check for data content?
+    if data:
+        return data['id']
+    #  list = loadImagesList()
+    #  if list:
+    #      return list[0]
+
+
+# Aliases (last => recent)...
+
+
+def getRecentImageData():
+    return getLastImageData()
+
+
+def getRecentImageId():
+    return getLastImageId()
 
 
 def removeAllImages():
@@ -51,8 +80,17 @@ def removeAllImages():
         os.remove(os.path.join(uploadPath, file))
 
 
+# TODO: def removeImage(id)
+
+
 __all__ = [  # Exporting objects...
     'loadImagesList',
+    'getImageData',
+    'getLastImageId',
+    'getLastImageData',
+    'getRecentImageId',
+    'getRecentImageData',
+    'removeAllImages',
 ]
 
 if __name__ == '__main__':

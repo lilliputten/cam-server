@@ -13,7 +13,7 @@
 Basic api structure:
 
 - GET `/api/images`: Get all images list.
-- GET `/api/last`: Get last image info.
+- GET `/api/images/recent`: Get recent image info.
 - GET `/api/images/{id}`: Get specific image info.
 - POST `/api/images/add`: Add (upload) new image. (Duplicates `/upload`?)
 - DELETE `/api/images`: Delete all images.
