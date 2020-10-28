@@ -22,7 +22,8 @@ from flask import request
 from .upload import uploadImage
 
 import listImages
-import removeImages
+import imageUtils
+#  import removeImages
 
 from externalApi import externalApi
 
@@ -95,7 +96,8 @@ def removeAllImages():
     TODO: Remove image by id
     """
     # TODO: Detect referrer & return back?
-    removeImages.removeImages()
+    imageUtils.removeAllImages()
+    #  removeImages.removeImages()
     return redirect('/')
 
 

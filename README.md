@@ -3,14 +3,14 @@
 
 ## Build info (auto-generated)
 
-- Version: 0.0.4
-- Last changes timestamp: 2020.10.21, 03:19
-- Last changes timetag: 201021-0319
+- Version: 0.0.5
+- Last changes timestamp: 2020.10.28, 02:56
+- Last changes timetag: 201028-0256
 
 
 ## API
 
-Basic api structure:
+Basic api structure (server v.0.0.5+):
 
 - GET `/api/images`: Get all images list.
 - GET `/api/images/recent`: Get recent image info.

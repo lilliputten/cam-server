@@ -8,9 +8,10 @@
 #  - GET `/api/images`: Get all images list.
 #  - GET `/api/images/recent`: Get recent image info.
 #  - GET `/api/images/{id}`: Get specific image info.
-#  - POST `/api/images/add`: Add (upload) new image. (Duplicates `/upload`?)
 #  - DELETE `/api/images`: Delete all images.
 #  - DELETE `/api/images/{id}`: Delete specific image.
+#
+#  - POST `/api/images/add`: Add (upload) new image. (Duplicates `/upload`?)
 
 import pathmagic  # noqa
 
@@ -35,6 +36,7 @@ from flask import request
 from logger import DEBUG
 
 import imageUtils
+#  import removeImages
 
 
 externalApi = Blueprint('api', __name__)
@@ -45,7 +47,7 @@ def test():
     return jsonify({'test': 'Ok'})
 
 
-@externalApi.route('/api/images')
+@externalApi.route('/api/images', methods=['GET'])
 def listAllImages():
     list = imageUtils.loadImagesList(True)
     DEBUG('externalApi:listAllImages called (/api/images)', {
@@ -81,6 +83,29 @@ def getRecentImageData():
         'data': data,
     })
     return jsonify(data)
+
+
+@externalApi.route('/api/images/<list:ids>', methods=['DELETE'])
+def deleteImages(ids):
+    """
+    Remove specified images
+    NOTE: Not fails if some of items or item files not exists
+    """
+    DEBUG('externalApi:deleteImages called (DELETE /api/images)', {
+        'ids': ids,
+    })
+    imageUtils.removeImages(ids)
+    return jsonify({'success': True, 'ids': ids})
+
+
+@externalApi.route('/api/images', methods=['DELETE'])
+def deleteAllImages():
+    """
+    Remove all images
+    """
+    DEBUG('externalApi:deleteAllImages called (DELETE /api/images)')
+    imageUtils.removeAllImages()
+    return jsonify({'success': True})
 
 
 @externalApi.route('/api/<path:route>', methods=['GET', 'POST', 'DELETE', 'PUT'])

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module server
 # @since 2019.03.28, 21:32
-# @changed 2020.10.17, 04:45
+# @changed 2020.10.28, 01:59
 
 import os
 from os import path
@@ -59,12 +59,6 @@ def uploadImage(ip, file):
     try:
         if not os.path.exists(uploadPath):
             os.makedirs(uploadPath)
-    except Exception, error:
-        DEBUG('uploadImage: error catched', {
-            'error': errors.toBlockString(error),
-        })
-        return {'error': 'Upload file creation error (see server log)'}
-    finally:
         # Save image...
         imageFilePath = os.path.join(uploadPath, id + config['imageExt'])
         file.save(imageFilePath)
@@ -74,7 +68,13 @@ def uploadImage(ip, file):
         # Update index file...
         indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
         with open(indexFilePath, 'ab') as indexFile:
-            indexFile.write(id + ' ' + ip + ' ' + timestamp + '\n')
+            indexFile.write(id + '\t' + ip + '\t' + timestamp + '\n')
+    except Exception, error:
+        DEBUG('uploadImage: error catched', {
+            'error': errors.toBlockString(error),
+        })
+        return {'error': 'Upload file error (see server log)'}
+    finally:
         return {'status': 'success', 'timestamp': timestamp, 'id': id, 'ip': ip}
 
 

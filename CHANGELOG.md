@@ -1,5 +1,6 @@
 # Changelog
 
+- 2020.10.28, 02:56 -- v.0.0.5: External API is done with methods: GET,DELETE `/api/images`, GET `/api/images/recent`, GET,DELETE `/api/images/{id}`.
 - 2020.10.26, 18:04 -- API errors processing (returns json with `error` and optional `traceback` keys).
 - 2020.10.26, 06:10 -- Errors catching, exernal api (in progress).
 - 2020.10.19, 04:51 -- Dropped react client app repository/used linked build folder (TODO!)
@@ -11,5 +12,5 @@
 - 2020.07.04, 03:43 -- Configuration, basic image upload receiver, uploader skeeleton (`test-upload.py`).
 
 <!--
- @changed 2020.10.26, 18:05
+ @changed 2020.10.28, 03:01
 -->

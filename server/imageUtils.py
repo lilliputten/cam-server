@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 # @module imageUtils
 # @since 2020.09.29, 23:56
-# @changed 2020.10.17, 02:49
+# @changed 2020.10.28, 01:59
 
 import pathmagic  # noqa # Add parent path to import paths for import config in debug mode
 
 import os
+import errno
 
 from config import config
 
@@ -14,7 +15,7 @@ from logger import DEBUG
 
 def parseIndexLine(s, full=False):
     try:
-        parts = s.split(' ')
+        parts = s.split('\t')
         id = parts[0]
         ip = parts[1]
         timestamp = parts[2]
@@ -71,7 +72,69 @@ def getRecentImageId():
     return getLastImageId()
 
 
+def removeImages(ids):
+    """
+    Remove specified images
+    NOTE: Not fails if some of items or item files not exists
+    """
+    # TODO: Lock file?
+    uploadPath = config['uploadPath']
+    # Load index..
+    imagesList = loadImagesList(True)
+    #  filelist = [ file for file in os.listdir(mydir) if file.endswith('.bak') ]  # TODO: Filter example
+    DEBUG('imageUtils:removeImages: start', {
+        'ids': ids,
+        'imagesList': imagesList,
+        'uploadPath': uploadPath,
+    })
+    # Remove items from images list...
+    imagesList = list(filter(lambda item: item['id'] not in ids, imagesList))
+    # Save updated index file...
+    indexFilePath = os.path.join(uploadPath, config['imagesIndex'])
+    DEBUG('imageUtils:removeImages: updated list', {
+        'ids': ids,
+        'imagesList': imagesList,
+        'indexFilePath': indexFilePath,
+    })
+    with open(indexFilePath, 'wb') as indexFile:
+        for item in imagesList:
+            indexFile.write(item['id'] + '\t' + item['ip'] + '\t' + item['timestamp'] + '\n')
+    # Remove single files...
+    for id in ids:
+        imageFilePath = os.path.join(uploadPath, id + config['imageExt'])
+        yamlFilePath = os.path.join(uploadPath, id + '.yaml')
+        DEBUG('imageUtils:removeImages: remove item files', {
+            'id': id,
+            'imageFilePath': imageFilePath,
+            'yamlFilePath': yamlFilePath,
+        })
+        # Try to dlete files ignoring 'not exist' errors...
+        try:
+            os.remove(imageFilePath)
+            DEBUG('imageUtils:removeImages: deleted', {'imageFilePath': imageFilePath})
+        except Exception, e:
+            if e.errno == errno.ENOENT:
+                DEBUG('imageUtils:removeImages: file not exist', {'imageFilePath': imageFilePath})
+            else:
+                raise
+        try:
+            os.remove(yamlFilePath)
+            DEBUG('imageUtils:removeImages: deleted', {'yamlFilePath': yamlFilePath})
+        except Exception, e:
+            if e.errno == errno.ENOENT:
+                DEBUG('imageUtils:removeImages: file not exist', {'yamlFilePath': yamlFilePath})
+            else:
+                raise
+    DEBUG('imageUtils:removeImages: done', {
+        'ids': ids,
+        'imagesList': imagesList,
+    })
+
+
 def removeAllImages():
+    """
+    Remove all images
+    """
     uploadPath = config['uploadPath']
     #  filelist = [ file for file in os.listdir(mydir) if file.endswith('.bak') ]  # TODO: Filter example
     DEBUG('imageUtils:removeAllImages', {'uploadPath': uploadPath})
