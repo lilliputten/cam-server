@@ -6,6 +6,7 @@
 import pathmagic  # noqa
 
 #  import os
+import traceback
 
 #  from flask import current_app as app
 from .app import app
@@ -17,7 +18,7 @@ from flask import jsonify
 from flask import request
 
 #  from config import config
-#  from .logger import DEBUG
+from .logger import DEBUG
 
 from .upload import uploadImage
 
@@ -117,13 +118,31 @@ def profile(username):
 
 # Upload image...
 
-
 @app.route('/upload', methods=['POST'])
 def upload():
     ip = request.environ['REMOTE_ADDR']
     file = request.files['file']
     result = uploadImage(ip, file)
     return jsonify(result)
+
+
+# Errors processing...
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    #  errorType, errorValue, errorTraceback = sys.exc_info()
+    #  @see https://docs.python.org/2/library/traceback.html
+    errorTraceback = traceback.format_exc()
+    error = str(e)
+    errorRepr = e.__repr__()
+    errorData = {
+        'error': error,
+        'repr': errorRepr,
+        'traceback': str(errorTraceback)
+    }
+    DEBUG('server:Exception', errorData)
+    #  return jsonify(errorData), getattr(e, 'code', 500)
+    return render_template('error.html', error=error), getattr(e, 'code', 500)
 
 
 if __name__ == '__main__':

@@ -1,12 +1,13 @@
 # -*- coding:utf-8 -*-
 # @module imageUtils
 # @since 2020.09.29, 23:56
-# @changed 2020.10.28, 01:59
+# @changed 2020.10.28, 03:31
 
 import pathmagic  # noqa # Add parent path to import paths for import config in debug mode
 
 import os
 import errno
+import traceback
 
 from config import config
 
@@ -23,8 +24,14 @@ def parseIndexLine(s, full=False):
             return {'id': id, 'ip': ip, 'timestamp': timestamp}
         return id
     except Exception as e:
-        DEBUG('imageUtils:parseIndexLine: error', {'error': str(e), 's': s})
-        raise e
+        error = str(e)
+        eTraceback = str(traceback.format_exc())
+        DEBUG('imageUtils:parseIndexLine: error', {
+            'error': error,
+            's': s,
+            'traceback': eTraceback,
+        })
+        raise Exception('Invalid images index line format: \'%s\' (parser message: %s)' % (s, error))
 
 
 def loadImagesList(full=False):

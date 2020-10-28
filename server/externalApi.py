@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @module externalApi
 # @since 2020.10.26, 03:19
-# @changed 2020.10.26, 18:18
+# @changed 2020.10.28, 03:31
 #
 #  Basic api structure (from `README.md`):
 #
@@ -129,8 +129,11 @@ def handle_error(e):
     #  errorType, errorValue, errorTraceback = sys.exc_info()
     #  @see https://docs.python.org/2/library/traceback.html
     errorTraceback = traceback.format_exc()
+    error = str(e)
+    errorRepr = e.__repr__()
     errorData = {
-        'error': 'Internal exception: ' + e.__repr__(),
+        'error': error,
+        'errorRepr': errorRepr,
         #  'type': str(errorType),
         'traceback': str(errorTraceback)
     }
