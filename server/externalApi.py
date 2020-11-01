@@ -49,13 +49,15 @@ def test():
 
 @externalApi.route('/api/images', methods=['GET'])
 def listAllImages():
-    list = imageUtils.loadImagesList(True)
+    images = imageUtils.loadImagesList(True)
     DEBUG('externalApi:listAllImages called (/api/images)', {
-        'list': list,
+        'images': images,
     })
-    if not list:
-        list = []
-    return jsonify(list)
+    if not images:
+        images = []
+    #  return jsonify(images)  # Invalid response: JSONArray instead JSONObject
+    #  return jsonify({'error': 'Test error'})  # Test failback
+    return jsonify({'images': images})
 
 
 @externalApi.route('/api/images/<id>')
