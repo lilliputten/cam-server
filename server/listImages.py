@@ -76,19 +76,26 @@ def viewLastImage():
 def sendImageFile(id):
     #  return render_template('viewImage.html', id=id)
     uploadPath = config['uploadPath']
-    if id == 'last':
+    if id == 'last' or id == 'recent':
         id = imageUtils.getLastImageId()
     imageFilePath = path.join(uploadPath, id + config['imageExt'])
     yamlFilePath = path.join(uploadPath, id + '.yaml')
+    DEBUG('sendImageFile: started', {
+        'id': id,
+        'imageFilePath': imageFilePath,
+        'yamlFilePath': yamlFilePath,
+    })
     if not path.isfile(imageFilePath) or not path.isfile(yamlFilePath):
         #  return 'imageNotFound'
         return render_template('imageNotFound.html', id=id)
     with open(yamlFilePath) as yamlFilePathFile:
         params = yaml.load(yamlFilePathFile, Loader=yaml.FullLoader)
         mimeType = params['mimeType']
-        DEBUG('viewImage called', {
+        fileSize = path.getsize(imageFilePath)
+        DEBUG('sendImageFile: image found', {
             'imageFilePath': imageFilePath,
             'yamlFilePath': yamlFilePath,
+            'fileSize': int(fileSize),
             'params': params,
         })
         # params data sample:

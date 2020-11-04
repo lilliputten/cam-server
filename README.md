@@ -4,8 +4,8 @@
 ## Build info (auto-generated)
 
 - Version: 0.0.5
-- Last changes timestamp: 2020.10.28, 02:56
-- Last changes timetag: 201028-0256
+- Last changes timestamp: 2020.11.05, 00:20
+- Last changes timetag: 201105-0020
 
 
 ## API
