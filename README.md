@@ -62,6 +62,12 @@ Use crontab to automate image capture.
 - Every minute: `* * * * * /home/pi/cam-client/client-make-and-upload-image.sh`
 - Every 5th minute: `*/5 * * * * /home/pi/cam-client/client-make-and-upload-image.sh`
 
+## Real crontab entry example:
+
+```shell
+*/5 * * * * sh /home/pi/cam-client/client-make-and-upload-image.sh >> /home/pi/cam-client/cron-log.txt 2>&1
+```
+
 ### Crontab commands:
 
 Edit crontab:

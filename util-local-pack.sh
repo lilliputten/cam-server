@@ -23,9 +23,9 @@ echo "Creating archive: '$ARCNAME' in folder '$ARCDIR'..." \
   --exclude "*.pyc" \
   --exclude "*.bak" --exclude "*.tmp" --exclude "*~"  --exclude "*_" --exclude "*.sw?" \
   --exclude "static" --exclude "templates" \
-  "build-*" \
-  "client-*" \
-  "config*" \
-  "*.md" \
-  "server/*" \
+  build-* \
+  client-* \
+  config* \
+  *.md \
+  server/* \
 && echo OK
