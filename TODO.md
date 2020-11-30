@@ -1,5 +1,6 @@
 # TODO
 
+- 2020.11.30, 19:38 -- Detect connection failure (count attempts per try, count of failed trials?). Reconnect wi-fi or reboot if connection absent?
 - 2020.10.19, 04:50 -- Serve react app build as static files/entrypoints.
 - 2020.10.17, 04:41 -- To store client upload script auth params in system variables?
 - 2020.10.17, 03:28 -- Use webcoket for new image upload events notifying?
