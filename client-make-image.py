@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # @desc Get image from camera (using `raspistill`)
 # @since 2020.10.16, 23:31
-# @changed 2020.10.17, 02:21
+# @changed 2021.05.02, 20:58
 
 #  import sys
 from os import path
@@ -10,8 +10,9 @@ import os
 
 from config import config
 
-#  # Using debug?
-#  from server.logger import DEBUG
+# Using debug
+from server.logger import DEBUG
+
 #  DEBUG('Test')
 
 # Config parameters...
@@ -27,10 +28,21 @@ command = 'raspistill -w %(imageWidth)d -h %(imageHeight)d -o "%(imgFile)s"' % p
 
 # Executing...
 try:
-    print('Making image using command: ' + command)
+    #  print('Making image using command: ' + command)
+    DEBUG('client-make-image: Make image with command', {
+        'command': command,
+    })
     execResult = os.system(command)
-    print('Command executing exit code: %d' % execResult)
+    #  print('Command executing exit code: %d' % execResult)
+    DEBUG('client-make-image: Command executing result', {
+        'command': command,
+        'exit code': execResult,
+    })
 except IOError as e:  # Generic io error...
+    DEBUG('client-make-image: Error catched', {
+        'error': e,
+        'command': command,
+    })
     raise SystemExit(e)
 
 #  # Parameters (real or test)...

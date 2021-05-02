@@ -27,5 +27,6 @@ echo "Creating archive: '$ARCNAME' in folder '$ARCDIR'..." \
   client-* \
   config* \
   *.md \
+  requirements.txt \
   server/* \
 && echo OK

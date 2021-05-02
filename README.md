@@ -4,8 +4,8 @@
 ## Build info (auto-generated)
 
 - Version: 0.0.5
-- Last changes timestamp: 2020.11.05, 00:20
-- Last changes timetag: 201105-0020
+- Last changes timestamp: 2021.05.02, 19:16
+- Last changes timetag: 210502-1916
 
 
 ## API
@@ -60,12 +60,22 @@ Use crontab to automate image capture.
 ### Sample crontab lines:
 
 - Every minute: `* * * * * /home/pi/cam-client/client-make-and-upload-image.sh`
-- Every 5th minute: `*/5 * * * * /home/pi/cam-client/client-make-and-upload-image.sh`
+- Every 15th minute: `*/15 * * * * /home/pi/cam-client/client-make-and-upload-image.sh`
 
 ## Real crontab entry example:
 
 ```shell
+# # Test entry...
+# 30 */1 * * * date >> ~/test_crontab
+
+# Make & upload shots every 15 minutes (with forced logging)...
 */5 * * * * sh /home/pi/cam-client/client-make-and-upload-image.sh >> /home/pi/cam-client/cron-log.txt 2>&1
+
+# Make & upload shots every 20 minutes...
+*/20 * * * * sh /home/pi/cam-client/client-make-and-upload-image.sh
+
+# Reboot every 3 hours (00:55, 03:55, etc...)
+55 */3 * * * sudo reboot -f
 ```
 
 ### Crontab commands:
@@ -104,5 +114,5 @@ python /home/pi/cam-client/client-make-image.py >>  /home/pi/cam-client/cron.log
 
 
 <!--
- @changed 2020.10.18, 20:48
+ @changed 2021.05.02, 21:05
 -->
